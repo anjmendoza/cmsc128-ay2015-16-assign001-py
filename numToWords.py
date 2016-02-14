@@ -28,11 +28,13 @@ def numToWords(integer):
 		print case1[integer]
 	#if the number entered by the user is greater than 20 but less than 100
 	elif integer >= 20 and integer < 100:  # 20 -99
+		#modulo of integer and 10 is stored in the temp variable
 		 temp = integer%10
 		 if temp > 0:
 		 	print case2[integer/10] + " - " + case1[temp]	#21, 22,etc
 		 else:
 		 	print case2[integer/10]							#30, 40, 50
+	#if the number entered by the user is greater than 100 but less than 1000
 	elif integer >= 100 and integer < 1000: # 100 -999
 		temp = integer % 100
 		if temp > 0 and temp < 20:
@@ -44,6 +46,7 @@ def numToWords(integer):
 		 		print case1[integer/100] + case3[0]+ " " + case2[temp/10]			#130, 140, 150
 		else:
 		 	print case1[integer/100] + case3[0]		#100, 200, 3000
+	#if the number entered by the user is greater than 1000 but less than 10000
 	elif integer >= 1000 and integer < 10000:	#1000-9999
 		temp = integer % 1000
 		if temp > 0 and temp < 20:
@@ -58,24 +61,24 @@ def numToWords(integer):
 				print case1[integer/1000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case1[temp%100] #1101, 1102, 103
 			elif (temp%100) >=20 and (temp%100)<100:
 				if((temp%100)%10) > 0:
-					print case1[integer/1000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case2[(temp%100)/10] + " - " + case1[(temp%100)%10]
+					print case1[integer/1000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case2[(temp%100)/10] + " - " + case1[(temp%100)%10] #1200, 1300
 				else:
-		 			print case1[integer/1000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case2[(temp%100)/10]
+		 			print case1[integer/1000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case2[(temp%100)/10]			#1050, 2030
 		else:
-		 	print case1[integer/1000] + case3[1]
+		 	print case1[integer/1000] + case3[1] #1000, 2000, 3000
+	#if the number entered by the user is greater than 10000 but less than 100000
 	elif integer >= 10000 and integer < 100000:
 		temp  = integer % 10000
-		print(temp)
 		if temp > 0 and temp < 10:
-			print case2[integer/10000] + case3[1] + " " + case1[temp]
+			print case2[integer/10000] + case3[1] + " " + case1[temp]  #10009, 10008, 10007
 		elif temp >= 20 and temp < 100:
 			if (temp%10) > 0:
-				print case2[integer/10000] + case3[1]+ " " + case2[temp/10] + " - " + case1[temp%10]		#1021, 1022, 1023
+				print case2[integer/10000] + case3[1]+ " " + case2[temp/10] + " - " + case1[temp%10]		#10021, 10022, 10023
 		 	else:
-		 		print case2[integer/10000] + case3[1]+ " " + case2[temp/10]
+		 		print case2[integer/10000] + case3[1]+ " " + case2[temp/10]									#10030, 10040
 		elif temp >=100 and temp < 1000:
 			if (temp%100) > 0 and (temp%100) < 20:
-				print case2[integer/10000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case1[temp%100] #1101, 1102, 103
+				print case2[integer/10000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case1[temp%100] #10101, 10102, 10103
 			elif (temp%100) >=20 and (temp%100)<100:
 				if((temp%100)%10) > 0:
 					print case2[integer/10000] + case3[1]+ " " + case1[temp/100] + case3[0] + " " + case2[(temp%100)/10] + " - " + case1[(temp%100)%10]
@@ -126,6 +129,8 @@ def numToWords(integer):
 				print case2[integer/10000] + case3[1]
 			else:
 				print case1[integer/1000] + case3[1]
+	#if the number entered by the user is greater than 100000 but less than 1000000
+	#the same with all the test cases above, however, the number is first divided to two parts the thousands and hundreds part
 	elif integer >=100000 and integer < 1000000:
 		temp1 = (integer/1000)%100
 		temp = (integer%100000) % 100
@@ -210,10 +215,9 @@ def numToWords(integer):
 					print case1[integer/100000] + case3[0] + " " + case3[1] + " " + case1[(integer%1000)/100] + case3[0]		#100, 200, 3000
 			 	else:
 			 		print case1[integer/100000] + case3[0] + " " + case3[1]	
-	
-
-
+	#if the number entered by the user is greater than 1000000 but less than 10000000
 	elif integer >= 1000000 and integer < 10000000:
+		#function is the same with all the test cases, however, the million value is subtracted first to the integer and stores it to another temp value
 		million=integer/1000000
 		integer=integer-(1000000*million)
 		temp1 = (integer/1000)%100
@@ -242,7 +246,6 @@ def numToWords(integer):
 			 		print case1[million] + " " + case3[2] + " " + case1[integer/100000] + case3[0]+ " " + case1[temp1]+ case3[1]
 		elif temp1 >=20 and temp1 < 100:
 			if (temp1%10) > 0:
-				#print case1[integer/100] + case3[0]+ " " + case2[temp1/10] + " - " + case1[temp1%10] 	#121, 122, 123
 				if temp > 0 and temp < 20:
 					if((integer%1000)/100 >0):
 						print case1[million] + " " + case3[2] + " " + case1[integer/100000] + case3[0]+ " " + case2[temp1/10]+  " - " + case1[temp1%10] + " " + case3[1] + " " + case1[(integer%1000)/100] + case3[0]+ " " + case1[temp]		#109, 108, 107
@@ -302,6 +305,6 @@ def numToWords(integer):
 	else:
 		print "Number is too large"
 			 					
-user_input= int(input("Enter the number: "))
-print (user_input)
-numToWords(user_input)
+user_input= int(input("Enter the number: "))	#gets user input
+print (user_input)	#prints user input
+numToWords(user_input)	#calls the function that converts the integer to words
